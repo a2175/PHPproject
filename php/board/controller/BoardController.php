@@ -14,6 +14,7 @@
             switch($this->param->action){
                 case 'view' : $this->openBoardDetail(); break;
                 case 'write' : $this->openBoardDetail(); break;
+                case 'delete' : $this->openBoardDetail(); break;
                 default : $this->openBoardList(); break;
             }
         }
@@ -29,6 +30,14 @@
             $this->footer();
         }
 
+        function openBoardDetail() {
+            $data = (object)$this->boardService->openBoardDetail();
+            $this->getTitle();
+            $this->header();
+            require_once(_APP."board/view/boardDetail.php");
+            $this->footer();
+        }
+
         function openBoardWrite() {
 
         }
@@ -37,9 +46,6 @@
 
         }
         
-        function openBoardDetail() {
-
-        }
         
         function openBoardUpdate() {
 

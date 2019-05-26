@@ -13,5 +13,9 @@
             $result['boardCount'] = $this->boardDAO->boardCount();
             return $result;
         }
+
+        function openBoardDetail() {
+            return $this->boardDAO->openBoardDetail();
+        }
     }
 ?>

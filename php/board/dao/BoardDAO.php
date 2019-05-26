@@ -20,5 +20,11 @@
             $stmt->execute();
             return $stmt->rowCount();
         }
+
+        function openBoardDetail() {
+            $stmt = $this->db->prepare("SELECT * FROM board where idx='{$this->param->idx}'");
+            $stmt->execute();
+            return $stmt->fetch();
+        }
     }
 ?>
