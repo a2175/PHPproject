@@ -26,5 +26,22 @@
             $stmt->execute();
             return $stmt->fetch();
         }
+
+        function insertBoard($values) {
+            $stmt = $this->db->prepare('INSERT INTO board set name = :name, pw = :pw, subject = :subject, content = :content, date=now()');
+            $stmt->execute($values);
+        }
+
+        function updateBoard($values) {
+            $stmt = $this->db->prepare("UPDATE board set name = :name, pw = :pw, subject = :subject, content = :content where idx='{$this->param->idx}' AND pw='{$values['pw']}'");
+            $stmt->execute($values);
+            return $stmt->rowCount();
+        }
+
+        function deleteBoard() {
+            $stmt = $this->db->prepare("DELETE FROM board where idx='{$this->param->idx}' AND pw='{$_POST['pw']}'");
+            $stmt->execute();
+            return $stmt->rowCount();
+        }
     }
 ?>

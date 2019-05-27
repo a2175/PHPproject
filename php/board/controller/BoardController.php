@@ -9,12 +9,19 @@
             $this->param = $param;
             $this->boardService = new BoardService($this->param);
 
-            //$this->openBoardList();
+            if(isset($_POST['request'])) {
+                switch($_POST['request']) {
+                    case 'insert' : $this->insertBoard(); break;
+                    case 'update' : $this->updateBoard(); break;
+                    case 'delete' : $this->deleteBoard(); break;
+                }
+            }
 
             switch($this->param->action){
                 case 'view' : $this->openBoardDetail(); break;
-                case 'write' : $this->openBoardDetail(); break;
-                case 'delete' : $this->openBoardDetail(); break;
+                case 'write' : $this->openBoardWrite(); break;
+                case 'update' : $this->openBoardUpdate(); break;
+                case 'delete' : $this->openBoardDelete(); break;
                 default : $this->openBoardList(); break;
             }
         }
@@ -31,7 +38,8 @@
         }
 
         function openBoardDetail() {
-            $data = (object)$this->boardService->openBoardDetail();
+            $data = $this->boardService->openBoardDetail();
+
             $this->getTitle();
             $this->header();
             require_once(_APP."board/view/boardDetail.php");
@@ -39,16 +47,55 @@
         }
 
         function openBoardWrite() {
+            $data['request'] = 'insert';
+            $data = (object)$data;
 
+            $this->getTitle();
+            $this->header();
+            require_once(_APP."board/view/boardWrite.php");
+            $this->footer();
         }
         
         function insertBoard() {
-
+            $this->boardService->insertBoard();
+            alert("완료되었습니다.");
+            move("/board");
         }
         
-        
         function openBoardUpdate() {
+            $data = $this->boardService->openBoardDetail();
 
+            $this->getTitle();
+            $this->header();
+            require_once(_APP."board/view/boardUpdate.php");
+            $this->footer();
+        }
+
+        function updateBoard() {
+            if($this->boardService->updateBoard()) {
+                alert("완료되었습니다.");
+                move("/board/view/{$this->param->idx}");
+            }
+            else {
+                alert("비밀번호가 일치하지 않습니다.");
+            }
+        }
+
+        function openBoardDelete() {
+            $this->getTitle();
+            $this->header();
+            require_once(_APP."board/view/boardDelete.php");
+            $this->footer();
+        }
+
+        function deleteBoard() {
+            if($this->boardService->deleteBoard()) {
+                alert("완료되었습니다.");
+                move("/board");
+            }
+            else {
+                alert("비밀번호가 일치하지 않습니다.");
+            }
         }
 
         //getTitle
@@ -59,11 +106,6 @@
         //header
         function header(){
             require_once(_APP."common/view/header.php");
-        }
-
-        //content
-        function content(){
-            
         }
 
         //footer

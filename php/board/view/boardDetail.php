@@ -16,7 +16,7 @@
     </div>
     <div class="btn_group">
         <a class="btn-default" href="<?php echo $this->param->get_page?>">목록</a>
-        <a class="btn-submit" href="<?php echo $this->param->get_page?>/write/<?php echo $this->param->idx?>">수정</a>
+        <a class="btn-submit" href="<?php echo $this->param->get_page?>/update/<?php echo $this->param->idx?>">수정</a>
         <a class="btn-submit" href="<?php echo $this->param->get_page?>/delete/<?php echo $this->param->idx?>">삭제</a>
     </div>
 </div>
