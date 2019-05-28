@@ -1,7 +1,7 @@
 <div class="board_write auto-center">
     <form action="" method="post">
     <fieldset><legend>글작성</legend>
-        <input type="hidden" name="request" value="<?php echo $data->request?>">
+        <input type="hidden" name="request" value="insert">
         <h3>글작성</h3>
         <div class="table">
             <div class="tr">

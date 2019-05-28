@@ -47,9 +47,6 @@
         }
 
         function openBoardWrite() {
-            $data['request'] = 'insert';
-            $data = (object)$data;
-
             $this->getTitle();
             $this->header();
             require_once(_APP."board/view/boardWrite.php");
@@ -59,7 +56,7 @@
         function insertBoard() {
             $this->boardService->insertBoard();
             alert("완료되었습니다.");
-            move("/board");
+            move(_URL."board");
         }
         
         function openBoardUpdate() {
@@ -74,7 +71,7 @@
         function updateBoard() {
             if($this->boardService->updateBoard()) {
                 alert("완료되었습니다.");
-                move("/board/view/{$this->param->idx}");
+                move(_URL."board/view/{$this->param->idx}");
             }
             else {
                 alert("비밀번호가 일치하지 않습니다.");
@@ -91,7 +88,7 @@
         function deleteBoard() {
             if($this->boardService->deleteBoard()) {
                 alert("완료되었습니다.");
-                move("/board");
+                move(_URL."board");
             }
             else {
                 alert("비밀번호가 일치하지 않습니다.");
@@ -110,7 +107,7 @@
 
         //footer
         function footer(){
-            require_once(_APP."common/view/header.php");
+            require_once(_APP."common/view/footer.php");
         }
     }
 ?>

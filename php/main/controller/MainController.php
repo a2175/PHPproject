@@ -33,7 +33,7 @@
 
         //footer
         function footer(){
-            require_once(_APP."common/view/header.php");
+            require_once(_APP."common/view/footer.php");
         }
     }
 ?>

@@ -5,7 +5,8 @@
         //생성자
         function __construct(){
             $this->getParam();
-            $controller = $this->param->page_type.'controller';
+            $controller = $this->param->page_type.'Controller';
+            $controller = ucfirst($controller);
             new $controller($this->param); // 동적 생성 = $page_type($param)
         }
         //get param
