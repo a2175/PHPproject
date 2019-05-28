@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="btn_group">
-            <a class="btn-default" href=<?php echo "/board/view/{$this->param->idx}"?>>취소</a>
+            <a class="btn-default" href="<?php echo $this->param->get_page?>/view/<?php echo $this->param->idx?>">취소</a>
             <button class="btn-submit" type="submit">완료</button>
         </div>
     </fieldset>
