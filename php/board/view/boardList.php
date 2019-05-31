@@ -27,4 +27,17 @@
       </tbody>
    </table>
    <div class="btn_group"><a class="btn-default" href="<?php echo $this->param->get_page?>/write">작성</a></div>
+   <div id="PAGE_NAVI" style="margin:auto; display:table;"></div>
 </div>
+
+<script type="text/javascript">
+   $(document).ready(function(){
+      var params = {
+         divId : "PAGE_NAVI",
+         pageIndex : "<?php echo $this->param->page_num?>",
+         totalCount : <?php echo $listNum?>,
+         eventName : "<?php echo $this->param->get_page."/page/"?>"
+      };
+      gfn_renderPaging(params);
+   });
+</script>

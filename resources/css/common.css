@@ -102,3 +102,6 @@ span.middle.all ~ * { display: inline-block; vertical-align: middle; }
 .table > .tr > .desc { width: 80%; }
 .table > .tr > .desc.content { min-height: 300px; }
 /*# sourceMappingURL=common.css.map */
+
+/* 내가 추가한 부분 */
+.pad_5 {padding: 5px;}

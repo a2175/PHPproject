@@ -1,9 +1,7 @@
-<!-- 
-#http://junil-hwang.com/blog/mvc-design-pattern-create/
-#http://junil-hwang.com/blog/php-mvc-board-%EA%B2%8C%EC%8B%9C%ED%8C%90/ 
--->
-
 <?php
+    #http://junil-hwang.com/blog/mvc-design-pattern-create/
+    #http://junil-hwang.com/blog/php-mvc-board-%EA%B2%8C%EC%8B%9C%ED%8C%90/ 
+
     define('_ROOT',dirname(__FILE__)."/");
     define('_APP',_ROOT."php/");
     define('_RESOURCES',_ROOT."resources/");
