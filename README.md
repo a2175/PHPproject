@@ -1,4 +1,7 @@
-#version = 1.50v
+#version = 1.51v
+
+[PhpProject 1.51v]
+1. 검색기능 일부 수정
 
 [PhpProject 1.50v]
 1. 게시글 검색기능 구축
