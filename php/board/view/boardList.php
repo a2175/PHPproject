@@ -47,14 +47,12 @@
       
       $("#search").on("click", function(e){ 
          e.preventDefault();
-         fn_openBoardSearchList()
+         fn_openBoardSearchList();
       });
    });
 
    function fn_openBoardSearchList() {
       keyword = $("#keyword").val();
-      var comSubmit = new ComSubmit();
-      comSubmit.setUrl("<?php echo $this->param->get_page.'/searchpage/1/'?>"+keyword);
-      comSubmit.submit();
+      location.href = "<?php echo $this->param->get_page.'/searchpage/1/'?>"+keyword;
    }
 </script>
