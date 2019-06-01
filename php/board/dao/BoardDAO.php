@@ -21,8 +21,26 @@
             return $stmt->fetchAll();
         }
 
+        function openBoardSearchList(){
+            $nPageIndex = $this->param->page_num - 1;
+            $nPageRow = 15;
+            
+            $START = $nPageIndex * $nPageRow;
+            $END = $nPageRow;
+
+            $stmt = $this->db->prepare("SELECT * FROM board WHERE subject LIKE CONCAT('%','{$this->param->keyword}','%') ORDER BY idx DESC LIMIT {$START}, {$END}");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+
         function boardCount() {
             $stmt = $this->db->prepare("SELECT * FROM board");
+            $stmt->execute();
+            return $stmt->rowCount();
+        }
+
+        function boardSearchCount() {
+            $stmt = $this->db->prepare("SELECT * FROM board WHERE subject LIKE CONCAT('%','{$this->param->keyword}','%')");
             $stmt->execute();
             return $stmt->rowCount();
         }

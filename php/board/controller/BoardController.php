@@ -22,17 +22,27 @@
                 case 'write' : $this->openBoardWrite(); break;
                 case 'update' : $this->openBoardUpdate(); break;
                 case 'delete' : $this->openBoardDelete(); break;
+                case 'searchpage' : $this->openBoardSearchList(); break;
                 default : $this->openBoardList(); break;
             }
         }
-
-        //index
+        
         function openBoardList(){
             $this->data = (object)$this->boardService->openBoardList();
             $this->getTitle();
             $this->header();
             $list = $this->data->list;
-            $listNum = $this->data->boardCount;
+            $listNum = $this->data->totalCount;
+            require_once(_APP."board/view/boardList.php");
+            $this->footer();
+        }
+
+        function openBoardSearchList(){
+            $this->data = (object)$this->boardService->openBoardSearchList();
+            $this->getTitle();
+            $this->header();
+            $list = $this->data->list;
+            $listNum = $this->data->totalCount;
             require_once(_APP."board/view/boardList.php");
             $this->footer();
         }

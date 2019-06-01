@@ -101,11 +101,13 @@ totalCount : 전체 조회 건수
 eventName : 페이징 하단의 숫자 등의 버튼이 클릭되었을 때 호출될 함수 이름
 */
 var gfv_eventName = null;
+var gfv_keyword = null;
 function gfn_renderPaging(params){
     var divId = params.divId; //페이징이 그려질 div id
     var totalCount = params.totalCount; //전체 조회 건수
     var currentIndex = params.pageIndex; //현재 위치
     gfv_eventName = params.eventName;
+    gfv_keyword = params.keyword;
 
     if(gfn_isNull(currentIndex) == true){
         currentIndex = 1;
@@ -156,5 +158,10 @@ function gfn_renderPaging(params){
 }
  
 function _movePage(value){
-    location.href = gfv_eventName+value;
+    if(gfn_isNull(gfv_keyword)) {
+        location.href = gfv_eventName+value;
+    }
+    else {
+        location.href = gfv_eventName+value+"/"+gfv_keyword;
+    }
 }

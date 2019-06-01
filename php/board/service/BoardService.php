@@ -10,7 +10,13 @@
 
         function openBoardList() {
             $result['list'] = $this->boardDAO->openBoardList();
-            $result['boardCount'] = $this->boardDAO->boardCount();
+            $result['totalCount'] = $this->boardDAO->boardCount();
+            return $result;
+        }
+
+        function openBoardSearchList(){
+            $result['list'] = $this->boardDAO->openBoardSearchList();
+            $result['totalCount'] = $this->boardDAO->boardSearchCount();
             return $result;
         }
 

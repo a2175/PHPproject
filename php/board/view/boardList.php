@@ -26,18 +26,35 @@
         <?php endforeach ?>
       </tbody>
    </table>
-   <div class="btn_group"><a class="btn-default" href="<?php echo $this->param->get_page?>/write">작성</a></div>
+   <div class="btn_group">
+      제목 검색: <input type="text" id="keyword" name="keyword" value="<?php echo $this->param->keyword?>">
+      <a href="#this" class="btn-submit" id="search">검색</a>
+      <a class="btn-default" href="<?php echo $this->param->get_page?>/write">작성</a>
+   </div>
    <div id="PAGE_NAVI" style="margin:auto; display:table;"></div>
 </div>
-
+<form id="commonForm" name="commonForm"></form>
 <script type="text/javascript">
    $(document).ready(function(){
       var params = {
          divId : "PAGE_NAVI",
          pageIndex : "<?php echo $this->param->page_num?>",
          totalCount : <?php echo $listNum?>,
-         eventName : "<?php echo $this->param->get_page."/page/"?>"
+         eventName : "<?php echo isset($this->param->keyword) ? $this->param->get_page.'/searchpage/' : $this->param->get_page.'/page/'?>",
+         keyword : "<?php echo $this->param->keyword?>"
       };
       gfn_renderPaging(params);
+      
+      $("#search").on("click", function(e){ 
+         e.preventDefault();
+         fn_openBoardSearchList()
+      });
    });
+
+   function fn_openBoardSearchList() {
+      keyword = $("#keyword").val();
+      var comSubmit = new ComSubmit();
+      comSubmit.setUrl("<?php echo $this->param->get_page.'/searchpage/1/'?>"+keyword);
+      comSubmit.submit();
+   }
 </script>
