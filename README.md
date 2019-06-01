@@ -1,4 +1,7 @@
-#version = 1.40v
+#version = 1.50v
+
+[PhpProject 1.50v]
+1. 게시글 검색기능 구축
 
 [PhpProject 1.40v]
 1. 게시판 페이징 구축
