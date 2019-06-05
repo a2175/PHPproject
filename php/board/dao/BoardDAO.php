@@ -8,7 +8,7 @@
             $this->db = new PDO("mysql:host=localhost;port=3307;dbname=mydb;charset=utf8", 'root', '000000');
             $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
         }
-        
+
         function openBoardList() {
             $nPageIndex = $this->param->page_num - 1;
             $nPageRow = 15;
@@ -16,7 +16,7 @@
             $START = $nPageIndex * $nPageRow;
             $END = $nPageRow;
             
-            $stmt = $this->db->prepare("SELECT * FROM board ORDER BY idx DESC LIMIT {$START}, {$END}");
+            $stmt = $this->db->prepare("SELECT *, (SELECT count(IDX) FROM comment WHERE board_idx = board.idx) AS commentNum FROM board ORDER BY idx DESC LIMIT {$START}, {$END}");
             $stmt->execute();
             return $stmt->fetchAll();
         }
@@ -28,7 +28,7 @@
             $START = $nPageIndex * $nPageRow;
             $END = $nPageRow;
 
-            $stmt = $this->db->prepare("SELECT * FROM board WHERE subject LIKE CONCAT('%','{$this->param->keyword}','%') ORDER BY idx DESC LIMIT {$START}, {$END}");
+            $stmt = $this->db->prepare("SELECT *, (SELECT count(IDX) FROM comment WHERE board_idx = board.idx) AS commentNum FROM board WHERE subject LIKE CONCAT('%','{$this->param->keyword}','%') ORDER BY idx DESC LIMIT {$START}, {$END}");
             $stmt->execute();
             return $stmt->fetchAll();
         }

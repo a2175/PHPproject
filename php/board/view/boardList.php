@@ -19,7 +19,7 @@
         <?php foreach ($list as $key => $data): ?>
         <tr>
            <td><?php echo $data->idx ?></td>
-           <td class="al_l"><a href="<?php echo "{$this->param->get_page}/view/{$data->idx}"?>"><?php echo $data->subject ?></a></td>
+           <td class="al_l"><a href="<?php echo "{$this->param->get_page}/view/{$data->idx}"?>"><?php echo $data->subject; if($data->commentNum>0) echo ' ['.$data->commentNum.']' ?></a></td>
            <td><?php echo $data->name ?></td>
            <td><?php echo $data->date ?></td>
         </tr>

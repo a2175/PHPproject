@@ -45,7 +45,7 @@
 
     function fn_selectCommentList() {
         var comAjax = new ComAjax();
-        comAjax.setUrl("http://localhost/comment/list/<?php echo $this->param->idx?>");
+        comAjax.setUrl("<?php echo _URL."comment/list/".$this->param->idx?>");
         comAjax.setCallback("fn_selectCommentListCallback");
         comAjax.ajax();
     }
@@ -86,7 +86,7 @@
 
         if(fn_checkComment()) {
             var comAjax = new ComAjax();
-            comAjax.setUrl("http://localhost/comment/write/<?php echo $this->param->idx?>");
+            comAjax.setUrl("<?php echo _URL."comment/write/".$this->param->idx?>");
             comAjax.addParam("request", "insert");
             comAjax.addParam("name", name);
             comAjax.addParam("pw", pw);
