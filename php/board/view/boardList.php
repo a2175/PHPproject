@@ -33,7 +33,7 @@
    </div>
    <div id="PAGE_NAVI" style="margin:auto; display:table;"></div>
 </div>
-<form id="commonForm" name="commonForm"></form>
+
 <script type="text/javascript">
    $(document).ready(function(){
       var params = {

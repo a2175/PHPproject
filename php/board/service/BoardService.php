@@ -39,5 +39,11 @@
         function deleteBoard() {
             return $this->boardDAO->deleteBoard();
         }
+
+        function selectCommentList() {
+            $result['list'] = $this->boardDAO->selectCommentList();
+            $result['totalCount'] = $this->boardDAO->commentCount();
+            return $result;
+        }
     }
 ?>

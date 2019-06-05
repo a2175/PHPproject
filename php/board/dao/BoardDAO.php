@@ -8,7 +8,7 @@
             $this->db = new PDO("mysql:host=localhost;port=3307;dbname=mydb;charset=utf8", 'root', '000000');
             $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
         }
-
+        
         function openBoardList() {
             $nPageIndex = $this->param->page_num - 1;
             $nPageRow = 15;

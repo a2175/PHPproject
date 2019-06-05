@@ -5,7 +5,7 @@
 <title><?php echo $this->title?></title>
 <link rel="stylesheet" href="<?php echo _CSS?>common.css">
 <script src="<?php echo _JS?>jquery-1.8.3.min.js"></script>
-<script src="<?php echo _JS?>common.js"></script>
+<script src="<?php echo _JS?>common.js?"></script>
 </head>
 <body>
 <header id="header">
@@ -21,3 +21,4 @@
         </ul>
     </nav>
 </header>
+<form id="commonForm" name="commonForm"></form>

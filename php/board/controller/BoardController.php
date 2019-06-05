@@ -26,7 +26,7 @@
                 default : $this->openBoardList(); break;
             }
         }
-        
+
         function openBoardList(){
             $this->data = (object)$this->boardService->openBoardList();
             $this->getTitle();
@@ -49,7 +49,6 @@
 
         function openBoardDetail() {
             $data = $this->boardService->openBoardDetail();
-
             $this->getTitle();
             $this->header();
             require_once(_APP."board/view/boardDetail.php");
@@ -71,7 +70,6 @@
         
         function openBoardUpdate() {
             $data = $this->boardService->openBoardDetail();
-
             $this->getTitle();
             $this->header();
             require_once(_APP."board/view/boardUpdate.php");
