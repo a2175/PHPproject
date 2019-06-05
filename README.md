@@ -1,4 +1,7 @@
-#version = 1.51v
+#version = 1.60v
+
+[PhpProject 1.60v]
+1. 게시글 댓글기능 구축
 
 [PhpProject 1.51v]
 1. 검색기능 일부 수정
