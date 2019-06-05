@@ -1,4 +1,8 @@
-#version = 1.60v
+#version = 1.61v
+
+[PhpProject 1.61v]
+1. 게시판에 게시글 댓글 개수 나오도록 수정
+2. 잘못된 URL 수정
 
 [PhpProject 1.60v]
 1. 게시글 댓글기능 구축
