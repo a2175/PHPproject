@@ -25,5 +25,11 @@
             $stmt = $this->db->prepare("INSERT INTO comment SET name = :name, pw = :pw, content = :content, board_idx='{$this->param->idx}', date=now()");
             $stmt->execute($values);
         }
+
+        function deleteComment() {
+            $stmt = $this->db->prepare("DELETE FROM comment WHERE idx='{$this->param->idx}' AND pw='{$_POST['pw']}'");
+            $stmt->execute();
+            return $stmt->rowCount();
+        }
     }
 ?>

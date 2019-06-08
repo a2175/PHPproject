@@ -12,6 +12,7 @@
             if(isset($_POST['request'])) {
                 switch($_POST['request']) {
                     case 'insert' : $this->insertComment(); break;
+                    case 'delete' : $this->deleteComment(); break;
                 }
             }
             else {
@@ -31,6 +32,7 @@
         }
 
         function deleteComment() {
+            echo $this->commentService->deleteComment();
         }
     }
 ?>

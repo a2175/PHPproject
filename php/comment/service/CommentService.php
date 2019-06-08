@@ -19,5 +19,9 @@
             unset($values['request']);
             $this->commentDAO->insertComment($values);
         }
+
+        function deleteComment() {
+            return $this->commentDAO->deleteComment();
+        }
     }
 ?>

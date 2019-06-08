@@ -105,8 +105,17 @@ span.middle.all ~ * { display: inline-block; vertical-align: middle; }
 
 /* 내가 추가한 부분 */
 .pad_5 {padding: 5px;}
-#comment h4 { padding-bottom: 10px; padding-top: 10px; font-size: 13px; }
-.submit { margin: 0 auto; padding-bottom: 20px; padding-top: 20px; margin-bottom: 25px; margin-top: 25px; background: rgb(250,250,250); border-top: 2px solid #444444; border-bottom: 2px solid #444444; }
-.submit > .input { float: left; margin-right: 10px; margin-left: 10px; }
-.submit > .input > .tr { margin-bottom: 5px; }
-.submit > .btn_group > .btn-submit { margin-right: 15px; }
+#comment_list { width: 1200px; word-wrap: break-word; }
+#comment_list h4 { padding-bottom: 10px; padding-top: 10px; font-size: 13px; }
+#comment_list > .table > .tr { position: relative; }
+#comment_list > .table > .tr > .lbl { width: 15%; font-weight: bold; }
+#comment_list > .table > .tr > .desc { width: 70%; }
+#comment_list > .table > .tr > .date { text-align: right; width: 12%; }
+#comment_list > .table > .tr > .delete { width: 3%; }
+#comment_list > .table > .tr .btn_group { position: absolute; top: -22px;  right: 30px; }
+#comment_list > .table > .tr .btn_group > input { width: 100px }
+#comment_list > .table > .tr .btn_group > .btn-submit { font-size: 13px; width: 70px; }
+.submit_comment { width: 1200px; margin: 0 auto; padding-bottom: 20px; padding-top: 20px; margin-bottom: 25px; margin-top: 25px; background: rgb(250,250,250); border-top: 2px solid #444444; border-bottom: 2px solid #444444; }
+.submit_comment > .input { float: left; margin-right: 10px; margin-left: 10px; }
+.submit_comment > .input > .tr { margin-bottom: 5px; }
+.submit_comment > .btn_group > .btn-submit { margin-right: 15px; }
