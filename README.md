@@ -1,4 +1,7 @@
-#version = 1.61v
+#version = 1.70v
+
+[PhpProject 1.70v]
+1. 댓글 삭제 구축
 
 [PhpProject 1.61v]
 1. 게시판에 게시글 댓글 개수 나오도록 수정
