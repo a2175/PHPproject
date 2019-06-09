@@ -44,7 +44,7 @@
 
     function fn_selectCommentList() {
         var comAjax = new ComAjax();
-        comAjax.setUrl("<?php echo _URL."comment/list/".$this->param->idx?>");
+        comAjax.setUrl("<?php echo _URL."comment/view/".$this->param->idx?>");
         comAjax.setCallback("fn_selectCommentListCallback");
         comAjax.ajax();
     }

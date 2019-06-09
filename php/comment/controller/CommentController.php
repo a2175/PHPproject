@@ -15,10 +15,9 @@
                     case 'delete' : $this->deleteComment(); break;
                 }
             }
-            else {
-                switch($this->param->action) {
-                    default : $this->selectCommentList(); break;
-                }
+
+            switch($this->param->action) {
+                case 'view' : $this->selectCommentList(); break;
             }
         }
 
