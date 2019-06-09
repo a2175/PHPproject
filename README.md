@@ -1,4 +1,7 @@
-#version = 1.70v
+#version = 1.80v
+
+[PhpProject 1.80v]
+1. 채팅 기능 구축
 
 [PhpProject 1.70v]
 1. 댓글 삭제 구축
