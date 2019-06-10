@@ -1,4 +1,7 @@
-#version = 1.80v
+#version = 1.81v
+
+[PhpProject 1.81v]
+1. 댓글, 채팅 등록 div, css 수정
 
 [PhpProject 1.80v]
 1. 채팅 기능 구축
