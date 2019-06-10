@@ -16,11 +16,11 @@
     </div>
     <div id="comment_list"></div>
     <div class="submit_comment">
-        <div class="input">
+        <span class="input">
             <div class="tr"><input type="text" id='name' placeholder="닉네임"></div>
             <div class="tr"><input type="password" id='pw' placeholder="비밀번호"></div>
-        </div>
-        <div class="desc"><textarea id="content" cols="137" rows="5" placeholder="내용"></textarea></div>
+        </span>
+        <span class="desc"><textarea id="content" rows="5" placeholder="내용"></textarea></span>
         <div class="btn_group">
             <a class="btn-submit" id="submit" href="">등록</a>
         </div>

@@ -2,8 +2,8 @@
     <div id="chat_list" class="chat_list"></div>
 
     <div class="submit_chat">
-        <div class="input"><input type="text" id='name' placeholder="닉네임" autofocus></div>
-        <div class="desc"><textarea id="content" cols="137" rows="5" placeholder="내용"></textarea></div>
+        <span class="input"><input type="text" id='name' placeholder="닉네임" autofocus></span>
+        <span class="desc"><textarea id="content" rows="5" placeholder="내용"></textarea></span>
         <div class="btn_group">
             <a class="btn-submit" id="submit" href="">등록</a>
         </div>

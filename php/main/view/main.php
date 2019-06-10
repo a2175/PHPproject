@@ -19,6 +19,9 @@
     </section>
     <section class='chat'>
         <h2>채팅</h2>
-        <div></div>
+        <div>
+            <br><br>
+            19-06-09 채팅 구축
+        </div>
     </section>
 </section>
