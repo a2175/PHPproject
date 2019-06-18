@@ -1,4 +1,9 @@
-#version = 1.81v
+#version = 1.82v
+
+[PhpProject 1.82v]
+1. common.js 수정
+2. jQuery 버전 수정
+3. 일부 view 수정
 
 [PhpProject 1.81v]
 1. 댓글, 채팅 등록 div, css 수정
