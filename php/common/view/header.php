@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <title><?php echo $this->title?></title>
 <link rel="stylesheet" href="<?php echo _CSS?>common.css">
-<script src="<?php echo _JS?>jquery-1.8.3.min.js"></script>
-<script src="<?php echo _JS?>common.js?"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="<?php echo _JS?>common.js"></script>
 </head>
 <body>
 <header id="header">

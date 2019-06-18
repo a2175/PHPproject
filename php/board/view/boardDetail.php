@@ -92,6 +92,10 @@
         var content = $("#content").val();
 
         if(fn_checkComment()) {
+            $("#name").val('');
+            $("#pw").val('');
+            $("#content").val('');
+            
             var comAjax = new ComAjax();
             comAjax.setUrl("<?php echo _URL."comment/write/{$this->param->idx}"?>");
             comAjax.addParam("request", "insert");
@@ -99,9 +103,7 @@
             comAjax.addParam("pw", pw);
             comAjax.addParam("content", content);
             comAjax.ajax();
-            $("#name").val('');
-            $("#pw").val('');
-            $("#content").val('');
+
             fn_selectCommentList();
         }
     }

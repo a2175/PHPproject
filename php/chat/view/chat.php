@@ -39,14 +39,16 @@
         var content = $("#content").val();
 
         if(fn_checkComment()) {
+            $("#content").val('');
+            $("#content").focus();
+
             var comAjax = new ComAjax();
             comAjax.setUrl("<?php echo _URL."chat/write"?>");
             comAjax.addParam("request", "insert");
             comAjax.addParam("name", name);
             comAjax.addParam("content", content);
             comAjax.ajax();
-            $("#content").val('');
-            $("#content").focus();
+            
             fn_selectChatList();
         }
          
