@@ -1,4 +1,7 @@
-#version = 1.82v
+#version = 1.83v
+
+[PhpProject 1.83v]
+1. 채팅 입력 엔터키로 입력되도록 이벤트 추가
 
 [PhpProject 1.82v]
 1. common.js 수정
