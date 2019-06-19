@@ -18,6 +18,13 @@
             fn_selectChatList();
         }, 1500);
         
+        $("#content").keydown(function(e){
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                fn_insertChat();
+            }
+        });
+
         $("#submit").on("click", function(e){ 
             e.preventDefault();
             fn_insertChat();
