@@ -1,4 +1,7 @@
-#version = 1.83v
+#version = 1.84v
+
+[PhpProject 1.84v]
+1. 채팅창 스크롤 이동 수정
 
 [PhpProject 1.83v]
 1. 채팅 입력 엔터키로 입력되도록 이벤트 추가
