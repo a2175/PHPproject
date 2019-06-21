@@ -13,6 +13,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         fn_selectChatList();
+	    fn_moveScrollEnd();
 
         setInterval(function() {
             fn_selectChatList();
@@ -72,6 +73,7 @@
         data = JSON.parse(data);
         var body = $("#chat_list");
         var length = $("#chat_list>.table>.tr").length;
+	    var prevScrollHeight = $('#chat_list')[0].scrollHeight;
         body.empty();
 
         var str = "";
@@ -86,8 +88,12 @@
         });
         str += "</div>";
         body.append(str);
+        
+        if(Object.keys(data).length != length && $('#chat_list').scrollTop() == (prevScrollHeight - 400))
+            fn_moveScrollEnd();
+    }
 
-        if(Object.keys(data).length != length)
-            $('#chat_list').scrollTop($('#chat_list')[0].scrollHeight);
+    function fn_moveScrollEnd() {
+        $('#chat_list').scrollTop($('#chat_list')[0].scrollHeight);
     }
 </script>
