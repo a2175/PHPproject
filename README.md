@@ -1,4 +1,8 @@
-#version = 1.84v
+#version = 1.90v
+
+[PhpProject 1.90v]
+1. jQuery를 순수 JavaScript로 수정
+2. Ajax에 Fetch API 사용
 
 [PhpProject 1.84v]
 1. 채팅창 스크롤 이동 수정
