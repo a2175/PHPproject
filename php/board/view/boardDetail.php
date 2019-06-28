@@ -33,13 +33,11 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        fn_selectCommentList();
-        
-        $("#submit").on("click", function(e){ 
-            e.preventDefault();
-            fn_insertComment();
-        });
+    fn_selectCommentList();
+    
+    document.getElementById("submit").addEventListener('click', function(e){
+        e.preventDefault();
+        fn_insertComment();
     });
 
     function fn_selectCommentList() {
@@ -51,33 +49,33 @@
 
     function fn_selectCommentListCallback(data) {
         data = JSON.parse(data);
-        var body = $("#comment_list");
-        body.empty();
-        body.append("<h4>총 댓글 수 : " + data.totalCount + "</h4>")
-        var str = "";
+        var body = document.getElementById("comment_list");
+        var str = "<h4>총 댓글 수 : " + data.totalCount + "</h4>";
         str += "<div class='table'>";
-        $.each(data.list, function(key, value){
+        for(var key in data.list) {
             str +=  "<div class='tr'>" +
-                        "<div class='lbl'>" + value.name + "</div>" +
-                        "<div class='desc'>" + value.content + "</div>" +
-                        "<div class='date'>" + value.date + "</div>" +
+                        "<div class='lbl'>" + data.list[key].name + "</div>" +
+                        "<div class='desc'>" + data.list[key].content + "</div>" +
+                        "<div class='date'>" + data.list[key].date + "</div>" +
                         "<div class='delete'>" + "<a href='#' id='opendel'><img src='<?php echo _IMG.'delete.jpg'?>'></a>" + "</div>" +
-                        "<input type='hidden' id='idx' value=" + value.idx + ">" +
+                        "<input type='hidden' id='idx' value=" + data.list[key].idx + ">" +
                     "</div>";
-        });
+        };
         str += "</div>";
-        body.append(str);
+        body.innerHTML = str;
 
-        $("a[id='opendel']").on("click", function(e){
-            e.preventDefault();
-            fn_openDeleteComment($(this).parent());
-        });
+        for(i=0; i<body.querySelectorAll('#opendel').length; i++) {          
+            body.querySelectorAll('#opendel')[i].addEventListener('click', function(e){
+                e.preventDefault();
+                fn_openDeleteComment(this.parentElement);
+            });
+        }
     }
     
     function fn_checkComment() {
-        var name = $("#name").val();
-        var pw = $("#pw").val();
-        var content = $("#content").val();
+        var name = document.getElementById("name").value;
+        var pw = document.getElementById("pw").value;
+        var content = document.getElementById("content").value;
 
         if(name.length == 0) { alert("닉네임을 입력해주세요."); return false; }
         if(pw.length == 0) { alert("비밀번호를 입력해주세요."); return false; }
@@ -87,53 +85,53 @@
     }
 
     function fn_insertComment() {
-        var name = $("#name").val();
-        var pw = $("#pw").val();
-        var content = $("#content").val();
+        var name = document.getElementById("name").value;
+        var pw = document.getElementById("pw").value;
+        var content = document.getElementById("content").value;
 
         if(fn_checkComment()) {
-            $("#name").val('');
-            $("#pw").val('');
-            $("#content").val('');
+            document.getElementById("name").value = '';
+            document.getElementById("pw").value = '';
+            document.getElementById("content").value = '';
             
             var comAjax = new ComAjax();
             comAjax.setUrl("<?php echo _URL."comment/write/{$this->param->idx}"?>");
+            comAjax.setCallback('fn_selectCommentList');
             comAjax.addParam("request", "insert");
             comAjax.addParam("name", name);
             comAjax.addParam("pw", pw);
             comAjax.addParam("content", content);
             comAjax.ajax();
-
-            fn_selectCommentList();
         }
     }
 
     function fn_openDeleteComment(obj) {
-        var div = obj.parent().find(".btn_group").length;
-        var str = '';
-        if(div == 0) {
-            str  =  "<div class='btn_group'>" +
-                        "<input type='password' id='commentpw' placeholder='비밀번호'>" +
-                        "<a id='commentdelete' class='btn-submit' href=''>확인</a>" +
-                        "<a id='commentcencel' class='btn-submit' href=''>취소</a>" +
-                    "</div>";
-        }
-        obj.parent().append(str);
+        if(document.getElementById("comment_list").querySelector(".btn_group") != null)
+            document.getElementById("comment_list").querySelector(".btn_group").remove();
+        
+        var div = document.createElement("div");
+        div.className = "btn_group";
+        var str = "<input type='password' id='commentpw' placeholder='비밀번호'>" +
+                  "<a id='commentdelete' class='btn-submit' href=''>확인</a>" +
+                  "<a id='commentcencel' class='btn-submit' href=''>취소</a>";
+        div.innerHTML = str;
+        
+        obj.parentElement.appendChild(div);
 
-        $("a[id='commentdelete']").on("click", function(e){
+        document.querySelector("a[id='commentdelete']").addEventListener('click', function(e){
             e.preventDefault();
-            fn_deleteComment($(this));
-        });
-
-        $("a[id='commentcencel']").on("click", function(e){
+            fn_deleteComment(this);
+        }); 
+        
+        document.querySelector("a[id='commentcencel']").addEventListener('click', function(e){
             e.preventDefault();
-            fn_deleteCencel($(this));
+            fn_deleteCencel(this);
         });
     }
 
     function fn_deleteComment(obj) {
-        var idx = obj.parent().parent().find("#idx").val();
-        var pw = obj.parent().find("#commentpw").val();
+        var idx = obj.parentElement.parentElement.querySelector("#idx").value;
+        var pw = obj.parentElement.querySelector("#commentpw").value;
 
         var comAjax = new ComAjax();
         comAjax.setUrl("<?php echo _URL."comment/delete/"?>"+idx);
@@ -154,6 +152,6 @@
     }
 
     function fn_deleteCencel(obj) {
-        obj.parent().remove();
+        obj.parentElement.remove();
     }
 </script>

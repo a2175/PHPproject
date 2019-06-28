@@ -35,24 +35,22 @@
 </div>
 
 <script type="text/javascript">
-   $(document).ready(function(){
-      var params = {
-         divId : "PAGE_NAVI",
-         pageIndex : "<?php echo $this->param->page_num?>",
-         totalCount : <?php echo $listNum?>,
-         eventName : "<?php echo isset($this->param->keyword) ? $this->param->get_page.'/searchpage/' : $this->param->get_page.'/page/'?>",
-         keyword : "<?php echo $this->param->keyword?>"
-      };
-      gfn_renderPaging(params);
-      
-      $("#search").on("click", function(e){ 
-         e.preventDefault();
-         fn_openBoardSearchList();
-      });
+   var params = {
+      divId : "PAGE_NAVI",
+      pageIndex : "<?php echo $this->param->page_num?>",
+      totalCount : <?php echo $listNum?>,
+      eventName : "<?php echo isset($this->param->keyword) ? $this->param->get_page.'/searchpage/' : $this->param->get_page.'/page/'?>",
+      keyword : "<?php echo $this->param->keyword?>"
+   };
+   gfn_renderPaging(params);
+   
+   document.getElementById("search").addEventListener('click', function(e){
+      e.preventDefault();
+      fn_openBoardSearchList();
    });
-
+   
    function fn_openBoardSearchList() {
-      keyword = $("#keyword").val();
+      keyword = document.getElementById("keyword").value;
       location.href = "<?php echo $this->param->get_page.'/searchpage/1/'?>"+keyword;
    }
 </script>

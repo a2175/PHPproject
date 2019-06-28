@@ -11,30 +11,27 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    fn_selectChatList();
+
+    setInterval(function() {
         fn_selectChatList();
-	    fn_moveScrollEnd();
+    }, 1500);
 
-        setInterval(function() {
-            fn_selectChatList();
-        }, 1500);
-        
-        $("#content").keydown(function(e){
-            if (e.keyCode == 13) {
-                e.preventDefault();
-                fn_insertChat();
-            }
-        });
-
-        $("#submit").on("click", function(e){ 
+    document.getElementById("content").addEventListener('keydown', function(e){
+        if (e.keyCode == 13) {
             e.preventDefault();
             fn_insertChat();
-        });
+        }
+    });
+    
+    document.getElementById("submit").addEventListener('click', function(e){
+        e.preventDefault();
+        fn_insertChat();
     });
 
     function fn_checkComment() {
-        var name = $("#name").val();
-        var content = $("#content").val();
+        var name = document.getElementById("name").value;
+        var content = document.getElementById("content").value;
 
         if(name.length == 0) { alert("닉네임을 입력해주세요."); return false; }
         if(content.length == 0) { alert("내용을 입력해주세요."); return false; }
@@ -43,23 +40,21 @@
     }
 
     function fn_insertChat() {
-        var name = $("#name").val();
-        var content = $("#content").val();
+        var name = document.getElementById("name").value;
+        var content = document.getElementById("content").value;
 
         if(fn_checkComment()) {
-            $("#content").val('');
-            $("#content").focus();
+            document.getElementById("content").value = '';
+            document.getElementById("content").focus();
 
             var comAjax = new ComAjax();
             comAjax.setUrl("<?php echo _URL."chat/write"?>");
+            comAjax.setCallback('fn_selectChatList');
             comAjax.addParam("request", "insert");
             comAjax.addParam("name", name);
             comAjax.addParam("content", content);
             comAjax.ajax();
-            
-            fn_selectChatList();
         }
-         
     }
 
     function fn_selectChatList() {
@@ -69,31 +64,32 @@
         comAjax.ajax();
     }
 
+    var callcounter = 0;
     function fn_selectChatListCallback(data) {
         data = JSON.parse(data);
-        var body = $("#chat_list");
-        var length = $("#chat_list>.table>.tr").length;
-	    var prevScrollHeight = $('#chat_list')[0].scrollHeight;
-        body.empty();
+        var body = document.getElementById("chat_list");
+        var length = body.querySelectorAll(".table>.tr").length;
+	    var prevScrollHeight = body.scrollHeight;
 
         var str = "";
         str += "<div class='table'>";
-        $.each(data, function(key, value){
+        for(var key in data) {
             str +=  "<div class='tr'>" +
-                        "<div class='lbl'>" + value.name + "</div>" +
-                        "<div class='desc'>" + value.content + "</div>" +
-                        "<div class='date'>" + value.date + "</div>" +
-                        "<input type='hidden' id='idx' value=" + value.idx + ">" +
+                        "<div class='lbl'>" + data[key].name + "</div>" +
+                        "<div class='desc'>" + data[key].content + "</div>" +
+                        "<div class='date'>" + data[key].date + "</div>" +
+                        "<input type='hidden' id='idx' value=" + data[key].idx + ">" +
                     "</div>";
-        });
+        };
         str += "</div>";
-        body.append(str);
-        
-        if(Object.keys(data).length != length && $('#chat_list').scrollTop() == (prevScrollHeight - 400))
+        body.innerHTML = str;
+
+        if(Object.keys(data).length != length && body.scrollTop == (prevScrollHeight - body.offsetHeight) || callcounter++ == 0)
             fn_moveScrollEnd();
     }
 
     function fn_moveScrollEnd() {
-        $('#chat_list').scrollTop($('#chat_list')[0].scrollHeight);
+        var body = document.getElementById("chat_list");
+        body.scrollTop = body.scrollHeight;
     }
 </script>
