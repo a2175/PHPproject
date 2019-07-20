@@ -1,8 +1,8 @@
 <div class="board_write auto-center">
     <form action="" method="post">
-    <fieldset><legend>글작성</legend>
+    <fieldset><legend>글수정</legend>
         <input type="hidden" name="request" value="update">
-        <h3>글작성</h3>
+        <h3>글수정</h3>
         <div class="table">
             <div class="tr">
                 <div class="lbl"><label for="board_name">작성자</label></div>

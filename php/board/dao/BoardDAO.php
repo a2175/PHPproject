@@ -57,7 +57,7 @@
         }
 
         function updateBoard($values) {
-            $stmt = $this->db->prepare("UPDATE board SET name = :name, pw = :pw, subject = :subject, content = :content WHERE idx='{$this->param->idx}' AND pw='{$values['pw']}'");
+            $stmt = $this->db->prepare("UPDATE board SET name = :name, subject = :subject, content = :content WHERE idx='{$this->param->idx}' AND pw=:pw");
             $stmt->execute($values);
             return $stmt->rowCount();
         }
