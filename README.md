@@ -1,4 +1,8 @@
-#version = 1.90v
+#version = 1.91v
+
+[PhpProject 1.91v]
+1. 게시글 수정 View 수정
+2. 게시글 수정 SQL 수정
 
 [PhpProject 1.90v]
 1. jQuery를 순수 JavaScript로 수정
