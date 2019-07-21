@@ -1,4 +1,7 @@
-#version = 1.91v
+#version = 1.92v
+
+[PhpProject 1.92v]
+1. PDO 객체 생성 모듈화
 
 [PhpProject 1.91v]
 1. 게시글 수정 View 수정
