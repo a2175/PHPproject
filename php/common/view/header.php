@@ -10,7 +10,7 @@
 <header id="header">
     <div>
         <div id="logo">
-            <h3><a href="<?php echo _URL?>">MVC MODEL HOMPAGE</a></h3>
+            <h3><a href="<?php echo _URL?>">PHP MVC MODEL HOMPAGE</a></h3>
         </div>
     </div>
     <nav id="gnb">

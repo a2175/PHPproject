@@ -65,7 +65,7 @@ function ComAjax(form){
             body: formData
         }).then(data => data.text())
           .then(eval(fv_ajaxCallback));
-    }; 
+    };
 }
 
 /*

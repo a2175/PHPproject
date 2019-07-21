@@ -15,5 +15,6 @@
     define('_CSS',_URL.'resources/css/');
     define('_JS',_URL.'resources/js/');
     require_once(_CONFIG."lib.php");
+    require_once(_CONFIG."database.php");
     new Application();
 ?>
