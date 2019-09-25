@@ -29,37 +29,33 @@
 
         function openBoardList(){
             $this->data = (object)$this->boardService->openBoardList();
-            $this->getTitle();
-            $this->header();
+            getHeader();
             $list = $this->data->list;
             $listNum = $this->data->totalCount;
-            require_once(_APP."board/view/boardList.php");
-            $this->footer();
+            require_once(_VIEW."board/boardList.php");
+            getFooter();
         }
 
         function openBoardSearchList(){
             $this->data = (object)$this->boardService->openBoardSearchList();
-            $this->getTitle();
-            $this->header();
+            getHeader();
             $list = $this->data->list;
             $listNum = $this->data->totalCount;
-            require_once(_APP."board/view/boardList.php");
-            $this->footer();
+            require_once(_VIEW."board/boardList.php");
+            getFooter();
         }
 
         function openBoardDetail() {
             $data = $this->boardService->openBoardDetail();
-            $this->getTitle();
-            $this->header();
-            require_once(_APP."board/view/boardDetail.php");
-            $this->footer();
+            getHeader();
+            require_once(_VIEW."board/boardDetail.php");
+            getFooter();
         }
 
         function openBoardWrite() {
-            $this->getTitle();
-            $this->header();
-            require_once(_APP."board/view/boardWrite.php");
-            $this->footer();
+            getHeader();
+            require_once(_VIEW."board/boardWrite.php");
+            getFooter();
         }
         
         function insertBoard() {
@@ -70,16 +66,15 @@
         
         function openBoardUpdate() {
             $data = $this->boardService->openBoardDetail();
-            $this->getTitle();
-            $this->header();
-            require_once(_APP."board/view/boardUpdate.php");
-            $this->footer();
+            getHeader();
+            require_once(_VIEW."board/boardUpdate.php");
+            getFooter();
         }
 
         function updateBoard() {
             if($this->boardService->updateBoard()) {
                 alert("완료되었습니다.");
-                move(_URL."board/view/{$this->param->idx}");
+                move(_URL."board/{$this->param->idx}");
             }
             else {
                 alert("비밀번호가 일치하지 않습니다.");
@@ -87,10 +82,9 @@
         }
 
         function openBoardDelete() {
-            $this->getTitle();
-            $this->header();
-            require_once(_APP."board/view/boardDelete.php");
-            $this->footer();
+            getHeader();
+            require_once(_VIEW."board/boardDelete.php");
+            getFooter();
         }
 
         function deleteBoard() {
@@ -101,21 +95,6 @@
             else {
                 alert("비밀번호가 일치하지 않습니다.");
             }
-        }
-
-        //getTitle
-        function getTitle(){
-            $this->title = 'MVC Model';
-        }
-
-        //header
-        function header(){
-            require_once(_APP."common/view/header.php");
-        }
-
-        //footer
-        function footer(){
-            require_once(_APP."common/view/footer.php");
-        }
+        }      
     }
 ?>

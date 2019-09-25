@@ -10,30 +10,10 @@
 
         //index
         function openMain(){
-            $this->getTitle();
-            $this->header();
-            $this->content();
-            $this->footer();
+            getHeader();
+            require_once(_VIEW."main/main.php");
+            getFooter();
         }
 
-        //getTitle
-        function getTitle(){
-            $this->title = 'MVC Model';
-        }
-
-        //header
-        function header(){
-            require_once(_APP."common/view/header.php");
-        }
-
-        //content
-        function content(){
-            require_once(_APP."main/view/main.php");
-        }
-
-        //footer
-        function footer(){
-            require_once(_APP."common/view/footer.php");
-        }
     }
 ?>

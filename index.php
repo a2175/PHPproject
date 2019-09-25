@@ -7,7 +7,7 @@
     define('_RESOURCES',_ROOT."resources/");
     define('_CONFIG',_APP."config/");
     //define('_MODEL',_APP."model/");
-    //define('_VIEW',_APP."view/");
+    define('_VIEW',_ROOT."views/");
     //define('_CONTROLLER',_APP."controller/");
     $url = str_replace("index.php","","http://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}");
     define('_URL',$url);

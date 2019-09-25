@@ -23,10 +23,9 @@
         }
 
         function openChat(){
-            $this->getTitle();
-            $this->header();
-            require_once(_APP."chat/view/chat.php");
-            $this->footer();
+            getHeader();
+            require_once(_VIEW."chat/chat.php");
+            getFooter();
         }
 
         function selectChatList() {
@@ -36,21 +35,6 @@
         
         function insertChat() {
             $this->chatService->insertChat();
-        }
-
-        //getTitle
-        function getTitle(){
-            $this->title = 'MVC Model';
-        }
-
-        //header
-        function header(){
-            require_once(_APP."common/view/header.php");
-        }
-
-        //footer
-        function footer(){
-            require_once(_APP."common/view/footer.php");
         }
     }
 ?>

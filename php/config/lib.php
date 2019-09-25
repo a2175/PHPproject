@@ -17,6 +17,18 @@
             move($url);
         }
     }
+    //getTitle
+    function getTitle(){
+        return 'MVC Model';
+    }
+    //getHeader
+    function getHeader(){
+        require_once(_VIEW."common/header.php");
+    }
+    //getFooter
+    function getFooter(){
+        require_once(_VIEW."common/footer.php");
+    }
     //autoload
     function __autoload($className){
         $className2 = preg_replace('/(.*)(application|view|controller|service|dao)/',"$2",strtolower($className)).'/';

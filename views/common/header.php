@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title><?php echo $this->title?></title>
+<title><?php echo getTitle()?></title>
 <link rel="stylesheet" href="<?php echo _CSS?>common.css">
 <script src="<?php echo _JS?>common.js"></script>
 </head>
