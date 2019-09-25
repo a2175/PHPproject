@@ -1,4 +1,12 @@
-#version = 1.92v
+PHP + MySQL
+==============================
+PHP를 사용한 간단한 CRUD 게시판과 채팅입니다.
+
+#version = 1.93v
+
+[PhpProject 1.93v]
+1. view 경로 변경
+2. 일부 코드 리팩토링
 
 [PhpProject 1.92v]
 1. PDO 객체 생성 모듈화
