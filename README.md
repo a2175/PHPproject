@@ -2,7 +2,10 @@ PHP + MySQL
 ==============================
 PHP를 사용한 간단한 CRUD 게시판과 채팅입니다.
 
-#version = 1.93v
+#version = 1.94v
+
+[PhpProject 1.94v]
+1. 게시글 수정, 삭제 코드 수정
 
 [PhpProject 1.93v]
 1. view 경로 변경
