@@ -16,14 +16,15 @@
                     case 'delete' : $this->deleteBoard(); break;
                 }
             }
-
-            switch($this->param->action){
-                case 'view' : $this->openBoardDetail(); break;
-                case 'write' : $this->openBoardWrite(); break;
-                case 'update' : $this->openBoardUpdate(); break;
-                case 'delete' : $this->openBoardDelete(); break;
-                case 'searchpage' : $this->openBoardSearchList(); break;
-                default : $this->openBoardList(); break;
+            else {
+                switch($this->param->action){
+                    case 'view' : $this->openBoardDetail(); break;
+                    case 'write' : $this->openBoardWrite(); break;
+                    case 'update' : $this->openBoardUpdate(); break;
+                    case 'delete' : $this->openBoardDelete(); break;
+                    case 'searchpage' : $this->openBoardSearchList(); break;
+                    default : $this->openBoardList(); break;
+                }
             }
         }
 
@@ -77,7 +78,11 @@
                 move(_URL."board/{$this->param->idx}");
             }
             else {
+                $data = (object)$_POST;
                 alert("비밀번호가 일치하지 않습니다.");
+                getHeader();
+                require_once(_VIEW."board/boardUpdate.php");
+                getFooter();
             }
         }
 
@@ -94,6 +99,9 @@
             }
             else {
                 alert("비밀번호가 일치하지 않습니다.");
+                getHeader();
+                require_once(_VIEW."board/boardDelete.php");
+                getFooter();
             }
         }      
     }
