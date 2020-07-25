@@ -1,6 +1,11 @@
 <?php
     #http://junil-hwang.com/blog/mvc-design-pattern-create/
     #http://junil-hwang.com/blog/php-mvc-board-%EA%B2%8C%EC%8B%9C%ED%8C%90/ 
+    require 'vendor/autoload.php';
+    use Dotenv\Dotenv;
+    // load .env file
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
 
     define('_ROOT',dirname(__FILE__)."/");
     define('_APP',_ROOT."php/");
@@ -15,6 +20,6 @@
     define('_CSS',_URL.'resources/css/');
     define('_JS',_URL.'resources/js/');
     require_once(_CONFIG."lib.php");
-    require_once(_CONFIG."database.php");
+    
     new Application();
 ?>

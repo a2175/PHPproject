@@ -23,9 +23,9 @@
         }
 
         function openChat(){
-            getHeader();
-            require_once(_VIEW."chat/chat.php");
-            getFooter();
+            renderView(function() {
+                require_once(_VIEW."chat/chat.php");
+            });
         }
 
         function selectChatList() {

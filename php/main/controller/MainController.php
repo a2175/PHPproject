@@ -10,9 +10,9 @@
 
         //index
         function openMain(){
-            getHeader();
-            require_once(_VIEW."main/main.php");
-            getFooter();
+            renderView(function() {
+                require_once(_VIEW."main/main.php");
+            });
         }
 
     }

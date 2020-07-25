@@ -29,34 +29,34 @@
         }
 
         function openBoardList(){
-            $this->data = (object)$this->boardService->openBoardList();
-            getHeader();
-            $list = $this->data->list;
-            $listNum = $this->data->totalCount;
-            require_once(_VIEW."board/boardList.php");
-            getFooter();
+            renderView(function() {
+                $this->data = (object)$this->boardService->openBoardList();
+                $list = $this->data->list;
+                $listNum = $this->data->totalCount;
+                require_once(_VIEW."board/boardList.php");
+            });
         }
 
         function openBoardSearchList(){
-            $this->data = (object)$this->boardService->openBoardSearchList();
-            getHeader();
-            $list = $this->data->list;
-            $listNum = $this->data->totalCount;
-            require_once(_VIEW."board/boardList.php");
-            getFooter();
+            renderView(function() {
+                $this->data = (object)$this->boardService->openBoardSearchList();
+                $list = $this->data->list;
+                $listNum = $this->data->totalCount;
+                require_once(_VIEW."board/boardList.php");
+            });
         }
 
         function openBoardDetail() {
-            $data = $this->boardService->openBoardDetail();
-            getHeader();
-            require_once(_VIEW."board/boardDetail.php");
-            getFooter();
+            renderView(function() {
+                $data = $this->boardService->openBoardDetail();
+                require_once(_VIEW."board/boardDetail.php");
+            });
         }
 
         function openBoardWrite() {
-            getHeader();
-            require_once(_VIEW."board/boardWrite.php");
-            getFooter();
+            renderView(function() {
+                require_once(_VIEW."board/boardWrite.php");
+            });
         }
         
         function insertBoard() {
@@ -66,10 +66,10 @@
         }
         
         function openBoardUpdate() {
-            $data = $this->boardService->openBoardDetail();
-            getHeader();
-            require_once(_VIEW."board/boardUpdate.php");
-            getFooter();
+            renderView(function() {
+                $data = $this->boardService->openBoardDetail();
+                require_once(_VIEW."board/boardUpdate.php");
+            });
         }
 
         function updateBoard() {
@@ -78,18 +78,18 @@
                 move(_URL."board/{$this->param->idx}");
             }
             else {
-                $data = (object)$_POST;
                 alert("비밀번호가 일치하지 않습니다.");
-                getHeader();
-                require_once(_VIEW."board/boardUpdate.php");
-                getFooter();
+                renderView(function() {
+                    $data = (object)$_POST;
+                    require_once(_VIEW."board/boardUpdate.php");
+                });
             }
         }
 
         function openBoardDelete() {
-            getHeader();
-            require_once(_VIEW."board/boardDelete.php");
-            getFooter();
+            renderView(function() {
+                require_once(_VIEW."board/boardDelete.php");
+            });
         }
 
         function deleteBoard() {
@@ -99,9 +99,9 @@
             }
             else {
                 alert("비밀번호가 일치하지 않습니다.");
-                getHeader();
-                require_once(_VIEW."board/boardDelete.php");
-                getFooter();
+                renderView(function() {
+                    require_once(_VIEW."board/boardDelete.php");
+                });
             }
         }      
     }
