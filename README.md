@@ -2,7 +2,13 @@ PHP + MySQL
 ==============================
 PHP를 사용한 간단한 CRUD 게시판과 채팅입니다.
 
-#version = 1.94v
+#version = 1.95v
+
+[PhpProject 1.95v]
+1. .env를 이용하여 설정하도록 수정
+2. __autoload 함수를 spl_autoload_register 함수로 수정
+3. getPDO 함수를 lib.php로 이동, database.php 삭제
+4. renderView 함수를 만들어 getTitle, getFooter 함수 중복 제거
 
 [PhpProject 1.94v]
 1. 게시글 수정, 삭제 코드 수정
