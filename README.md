@@ -2,7 +2,10 @@ PHP + MySQL
 ==============================
 PHP를 사용한 간단한 CRUD 게시판과 채팅입니다.
 
-#version = 1.95v
+#version = 1.96v
+
+[PhpProject 1.96v]
+1. 실시간 채팅에 Pusher를 사용하도록 수정
 
 [PhpProject 1.95v]
 1. .env를 이용하여 설정하도록 수정
