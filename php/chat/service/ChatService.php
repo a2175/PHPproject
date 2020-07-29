@@ -15,7 +15,8 @@
         function insertChat() {
             $values = $_POST;
             unset($values['request']);
-            $this->chatDAO->insertChat($values);
+            $idx = $this->chatDAO->insertChat($values);
+            return $this->chatDAO->selectChatDetail($idx);
         }
     }
 ?>

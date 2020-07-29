@@ -1,5 +1,15 @@
 <div class="auto-center">
-    <div id="chat_list" class="chat_list"></div>
+    <div id="chat_list" class="chat_list">
+        <div class='table'>
+            <?php foreach ($list as $key => $data): ?>
+                <div class='tr'>
+                    <div class='lbl'><?php echo $data->name ?></div> 
+                    <div class='desc'><?php echo $data->content ?></div> 
+                    <div class='date'><?php echo $data->date ?></div> 
+                </div>  
+            <?php endforeach ?>
+        </div>
+    </div>
 
     <div class="submit_chat">
         <span class="input"><input type="text" id='name' placeholder="닉네임" autofocus></span>
@@ -10,12 +20,31 @@
     </div>
 </div>
 
+<script src="https://js.pusher.com/6.0/pusher.min.js"></script>
 <script type="text/javascript">
-    fn_selectChatList();
+    fn_moveScrollEnd();
 
-    setInterval(function() {
-        fn_selectChatList();
-    }, 1500);
+    const pusher = new Pusher("<?php echo $_ENV['PUSHER_APP_KEY'] ?>", {
+        cluster: "<?php echo $_ENV['PUSHER_APP_CLUSTER'] ?>",
+    });
+
+    const channel = pusher.subscribe('chats');
+
+    channel.bind('MessageSend', function (data) {
+        var body = document.getElementById("chat_list");
+        var prevScrollHeight = body.scrollHeight;
+
+        var str =  "<div class='tr'>" +
+                        "<div class='lbl'>" + data.name + "</div>" +
+                        "<div class='desc'>" + data.content + "</div>" +
+                        "<div class='date'>" + data.date + "</div>" +
+                    "</div>";
+
+        body.querySelector('.table').innerHTML += str;
+
+        if(body.scrollTop == (prevScrollHeight - body.offsetHeight))
+            fn_moveScrollEnd();
+    });
 
     document.getElementById("content").addEventListener('keydown', function(e){
         if (e.keyCode == 13) {
@@ -49,43 +78,11 @@
 
             var comAjax = new ComAjax();
             comAjax.setUrl("<?php echo _URL."chat/write"?>");
-            comAjax.setCallback('fn_selectChatList');
             comAjax.addParam("request", "insert");
             comAjax.addParam("name", name);
             comAjax.addParam("content", content);
             comAjax.ajax();
         }
-    }
-
-    function fn_selectChatList() {
-        var comAjax = new ComAjax();
-        comAjax.setUrl("<?php echo _URL."chat/view"?>");
-        comAjax.setCallback("fn_selectChatListCallback");
-        comAjax.ajax();
-    }
-
-    var callcounter = 0;
-    function fn_selectChatListCallback(data) {
-        data = JSON.parse(data);
-        var body = document.getElementById("chat_list");
-        var length = body.querySelectorAll(".table>.tr").length;
-	    var prevScrollHeight = body.scrollHeight;
-
-        var str = "";
-        str += "<div class='table'>";
-        for(var key in data) {
-            str +=  "<div class='tr'>" +
-                        "<div class='lbl'>" + data[key].name + "</div>" +
-                        "<div class='desc'>" + data[key].content + "</div>" +
-                        "<div class='date'>" + data[key].date + "</div>" +
-                        "<input type='hidden' id='idx' value=" + data[key].idx + ">" +
-                    "</div>";
-        };
-        str += "</div>";
-        body.innerHTML = str;
-
-        if(Object.keys(data).length != length && body.scrollTop == (prevScrollHeight - body.offsetHeight) || callcounter++ == 0)
-            fn_moveScrollEnd();
     }
 
     function fn_moveScrollEnd() {
